@@ -1,11 +1,11 @@
 async function a() {
-    let ticketbooked = new Promise((resolve,reject)=>{
-        if(1){
-            setTimeout(()=>{
+    let ticketbooked = new Promise((resolve, reject) => {
+        if (1) {
+            setTimeout(() => {
                 alert("ticket booked")
             })
-        }else{
-            setTimeout(()=>{
+        } else {
+            setTimeout(() => {
                 alert("ticket not booked")
             })
         }
@@ -15,15 +15,15 @@ a()
 
 
 
-async function a(){
-    let ticketBook=await fetch("https://fakestoreapi.com/products");
-    let ticketBook2=await fetch("https://fakestoreapi.com/products");
-    let finalData= await ticketBook.json()
-    let finalData2= await ticketBook2.json()
-    let dd="allmyData"   
+async function a() {
+    let ticketBook = await fetch("https://fakestoreapi.com/products");
+    let ticketBook2 = await fetch("https://fakestoreapi.com/products");
+    let finalData = await ticketBook.json()
+    let finalData2 = await ticketBook2.json()
+    let dd = "allmyData"
     console.log(finalData);
     console.log(finalData2);
-    console.log(dd); 
+    console.log(dd);
 }
 
 a()
@@ -35,53 +35,53 @@ a()
 const productOrdered = new Promise((resolve, reject) => {
     const orderSuccess = true; // Set to false to simulate failure in ordering
     setTimeout(() => {
-      if (orderSuccess) {
-        resolve("Product ordered successfully!");
-      } else {
-        reject("Failed to order the product.");
-      }
+        if (orderSuccess) {
+            resolve("Product ordered successfully!");
+        } else {
+            reject("Failed to order the product.");
+        }
     }, 1000); // Simulating a delay for placing an order
-  });
+});
 
-  // Stage 2: Product Shipped
-  const productShipped = new Promise((resolve, reject) => {
+// Stage 2: Product Shipped
+const productShipped = new Promise((resolve, reject) => {
     const shippingSuccess = true; // Set to false to simulate shipping failure
     setTimeout(() => {
-      if (shippingSuccess) {
-        resolve("Product has been shipped!");
-      } else {
-        reject("Failed to ship the product.");
-      }
+        if (shippingSuccess) {
+            resolve("Product has been shipped!");
+        } else {
+            reject("Failed to ship the product.");
+        }
     }, 2000); // Simulating a delay for shipping
-  });
+});
 
-  // Stage 3: Product Delivered
-  const productDelivered = new Promise((resolve, reject) => {
-    const deliverySuccess = false; // Set to false to simulate delivery failure
+// Stage 3: Product Delivered
+const productDelivered = new Promise((resolve, reject) => {
+    const deliverySuccess = true; // Set this to true for successful delivery
     setTimeout(() => {
-      if (deliverySuccess) {
-        resolve("Product delivered successfully!");
-      } else {
-        reject("Failed to deliver the product.");
-      }
+        if (deliverySuccess) {
+            resolve("Product delivered successfully!");
+        } else {
+            reject("Failed to deliver the product.");
+        }
     }, 3000); // Simulating a delay for delivery
-  });
+});
 
-  // Chain the promises together
-  productOrdered
+// Chain the promises together
+productOrdered
     .then((result) => {
-      console.log(result); // Product ordered
-      return productShipped; // Proceed to shipping
+        console.log(result); // Product ordered
+        return productShipped; // Proceed to shipping
     })
     .then((result) => {
-      console.log(result); // Product shipped
-      return productDelivered; // Proceed to delivery
+        console.log(result); // Product shipped
+        return productDelivered; // Proceed to delivery
     })
     .then((result) => {
-      console.log(result); // Product delivered
+        console.log(result); // Product delivered
     })
     .catch((error) => {
-      console.error("Error:", error); // Handle any errors in the chain
+        console.error("Error:", error); // Handle any errors in the chain
     });
 
 
@@ -103,7 +103,7 @@ const productOrdered = new Promise((resolve, reject) => {
 //     console.log(z)
 //     let cards=document.createElement("div")
 //     cards.innerHTML=`       <img src="${z.image}" width=300px/ height=300px>
-//                             <h2>${z.title}</h2> <p>${z.price}</p> 
+//                             <h2>${z.title}</h2> <p>${z.price}</p>
 //                             <p>${z.category}</p>
 //     `
 //     container.appendChild(cards)
